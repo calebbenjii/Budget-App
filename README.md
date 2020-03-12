@@ -1,5 +1,3 @@
-# BudgetApp
-A budgeting app with javaScript
+# Budget monthly App Calculator
 
-
-This app allows us to add income and expenses for a certen month and then app calculate how much we have spend and how much we have made and gives us our budget for the month.
+Budgeting is a budget monthly expenses calculator, that is helping the user keep track of all the Income and Expenses and give the user a total of what is left by the end of the month. built with pure javaScript Module pattern.
