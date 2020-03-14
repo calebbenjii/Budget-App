@@ -14,7 +14,8 @@ const UIController = ( function() {
   const DOMStrings = {
     inputType: '.add__type',
     description: '.add__description',
-    valued: '.add__value'
+    valued: '.add__value',
+    inputBtn: '.add__btn'
   }
 
   return {
@@ -27,7 +28,7 @@ const UIController = ( function() {
     }, 
 
     getDomString: () => {
-      return DOMStrings;
+      return DOMStrings; 
     }
 
   };
@@ -37,6 +38,20 @@ const UIController = ( function() {
 
 // GLOBAL APP CONTROLLER
 const controller = ( function(budgetCtrl, UICtrl) {
+
+  const seUpEventListeners = () => {
+
+    const DOM =  UICtrl.getDomString();
+
+    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
+
+    // handeling enter keypress
+    document.addEventListener('keypress', function(e) {
+      if (e.keyCode === 13 || e.which === 13) {
+        ctrlAddItem(); 
+      }
+    });
+  }
 
   const ctrlAddItem = function() {
 
@@ -51,15 +66,16 @@ const controller = ( function(budgetCtrl, UICtrl) {
       // 4. Calculate the budget
   
       // 5. Display the budget on this UI 
-  }
+  };
 
-  document.querySelector('.add__btn').addEventListener('click', ctrlAddItem);
-
-  // handeling enter keypress
-  document.addEventListener('keypress', function(e) {
-    if (e.keyCode === 13 || e.which === 13) {
-       ctrlAddItem(); 
+  return {
+    init: function() {
+      console.log('Application has started.');
+      setUpEventListeners();
     }
-  });
+  };
 
 })(budgetController, UIController); 
+
+// without this line nothing will happen because there will be no eventListeners, without eventlistener we can not input data and without data there no application.
+controller.init();
