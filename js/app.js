@@ -39,7 +39,7 @@ const UIController = ( function() {
 // GLOBAL APP CONTROLLER
 const controller = ( function(budgetCtrl, UICtrl) {
 
-  const seUpEventListeners = () => {
+  const setUpEventListeners = () => {
 
     const DOM =  UICtrl.getDomString();
 
