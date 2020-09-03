@@ -3,6 +3,18 @@
 // Data Module
 const budgetController = ( function() {
 
+  // date module for expenses and income
+  const expense = function(id, description, value) {
+    this.id = id,
+    this.description = description,
+    this.value = value
+  };
+
+  const income = function(id, description, value) {
+    this.id = id,
+    this.description = description,
+    this.value = value;
+  };
 
 })();
 
@@ -57,7 +69,6 @@ const controller = ( function(budgetCtrl, UICtrl) {
 
       // 1. Get the field input data
       const input = UICtrl.getInput();
-      console.log(input);
   
       // 2. Add the item to the budget controller
   
@@ -79,3 +90,4 @@ const controller = ( function(budgetCtrl, UICtrl) {
 
 // without this line nothing will happen because there will be no eventListeners, without eventlistener we can not input data and without data there no application.
 controller.init();
+
