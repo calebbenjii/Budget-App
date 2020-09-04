@@ -3,60 +3,70 @@
 // Data Module
 const budgetController = ( function() {
 
-  // date module for expenses and income
-  const expense = function(id, description, value) {
-    this.id = id,
-    this.description = description,
-    this.value = value
-  };
-
-  const income = function(id, description, value) {
-    this.id = id,
-    this.description = description,
+  const Expences = (id, description, value) => {
+    this.id = id;
+    this.description = description;
     this.value = value;
   };
 
-})();
+  const Income = (id, description, value) => {
+    this.id = id;
+    this.description = description;
+    this.value = value;
+  };
 
+  let allExpence = [];
+  let allIncome = [];
+  let total = []
+
+  const data = {
+    allItems: {
+      exp: = [],
+      inc: = []
+    }
+    allTotals: {
+      exp: 0,
+      inc: 0
+    }
+  }
+
+})();
 
 
 // UI CONTROLLER
 const UIController = ( function() {
 
   const DOMStrings = {
-    inputType: '.add__type',
-    description: '.add__description',
-    valued: '.add__value',
-    inputBtn: '.add__btn'
+    inputTypes: '.add__type',
+    inputDescription: '.add__description',
+    inputValue: '.add__value',
+    inputAdd: '.add__btn',
   }
 
   return {
-    getInput: function() {
+    getInput: () => {
       return {
-        type: document.querySelector(DOMStrings.inputType).value, // will be either inc or exp
-        description: document.querySelector(DOMStrings.description).value,
-        value: document.querySelector(DOMStrings.valued).value,
+        type: document.querySelector(DOMStrings.inputTypes).value, // will be either income or expense
+        description: document.querySelector(DOMStrings.inputDescription).value,
+        value: document.querySelector(DOMStrings.inputValue).value
       }
-    }, 
+    },
 
-    getDomString: () => {
-      return DOMStrings; 
+    getDomStrings: () => {
+      return DOMStrings;
     }
-
-  };
+  }
 
 })();
 
 
 // GLOBAL APP CONTROLLER
 const controller = ( function(budgetCtrl, UICtrl) {
-
+  
   const setUpEventListeners = () => {
-
-    const DOM =  UICtrl.getDomString();
-
-    document.querySelector(DOM.inputBtn).addEventListener('click', ctrlAddItem);
-
+    let DOM = UICtrl.getDomStrings()
+    document.querySelector(DOM.inputAdd).addEventListener('click', ctrlAddItem);
+  
     // handeling enter keypress
     document.addEventListener('keypress', function(e) {
       if (e.keyCode === 13 || e.which === 13) {
@@ -66,9 +76,9 @@ const controller = ( function(budgetCtrl, UICtrl) {
   }
 
   const ctrlAddItem = function() {
-
       // 1. Get the field input data
-      const input = UICtrl.getInput();
+      let inputs = UICtrl.getInput();
+      console.log(inputs);
   
       // 2. Add the item to the budget controller
   
@@ -76,16 +86,16 @@ const controller = ( function(budgetCtrl, UICtrl) {
   
       // 4. Calculate the budget
   
-      // 5. Display the budget on this UI 
+      // 5. Display the budget on this UI
   };
-
+ 
   return {
-    init: function() {
-      console.log('Application has started.');
-      setUpEventListeners();
+    init: () => {
+      console.log('Application has Started...');
+      setUpEventListeners()
     }
-  };
-
+  }
+  
 })(budgetController, UIController); 
 
 // without this line nothing will happen because there will be no eventListeners, without eventlistener we can not input data and without data there no application.
