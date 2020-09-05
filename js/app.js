@@ -21,12 +21,20 @@ const budgetController = ( function() {
 
   const data = {
     allItems: {
-      exp: = [],
-      inc: = []
-    }
-    allTotals: {
+      exp: [],
+      inc: []
+    },
+    totals: {
       exp: 0,
       inc: 0
+    }
+  }
+
+  return {
+    addItem: (type, des, val) => {
+      let newItem,
+
+      newItem = new Expences(ID, des, val);
     }
   }
 
